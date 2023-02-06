@@ -5,5 +5,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
 	res.send("this auth endpoint");
 });
-
+router.get("/register", (req, res) => {
+	res.send("this auth register endpoint");
+});
 export default router;

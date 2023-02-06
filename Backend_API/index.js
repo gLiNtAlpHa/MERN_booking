@@ -2,6 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
+import usersRoute from "./routes/users.js";
+import vehiclesRoute from "./routes/vehicles.js";
+import vehiceSHolderRoute from "./routes/vehicle_stakeholder.js";
+
 // import body-parser from "body-parser";
 const app = express();
 
