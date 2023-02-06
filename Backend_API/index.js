@@ -1,6 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import authRoute from "./routes/auth.js";
+// import body-parser from "body-parser";
+const app = express();
 
 dotenv.config();
 const db_connect = async () => {
@@ -11,8 +14,13 @@ const db_connect = async () => {
 		throw error;
 	}
 };
+mongoose.connection.on("disconnected", () => {
+	console.log("mongdb disconnected");
+});
 
-const app = express();
+//middleware
+
+app.use("/auth", authRoute);
 
 app.listen(8000, () => {
 	db_connect();
