@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
-import vehiclesRoute from "./routes/vehicles.js";
-import vehiceSHolderRoute from "./routes/vehicle_stakeholder.js";
+import roomsRoute from "./routes/rooms.js";
+import hotelsRoute from "./routes/hotels.js";
 
 // import body-parser from "body-parser";
 const app = express();
@@ -13,7 +13,7 @@ dotenv.config();
 const db_connect = async () => {
 	try {
 		await mongoose.connect(process.env.Mongo_db);
-		console.log("connected");
+		console.log(" mongodb connected");
 	} catch (error) {
 		throw error;
 	}
@@ -23,8 +23,11 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //middleware
-
-app.use("/auth", authRoute);
+app.use(express.json());
+app.use("/api/auth", authRoute);
+app.use("/api/hotels", hotelsRoute);
+app.use("/api/rooms", roomsRoute);
+app.use("/api/user", usersRoute);
 
 app.listen(8000, () => {
 	db_connect();
