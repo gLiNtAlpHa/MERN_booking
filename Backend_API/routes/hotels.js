@@ -41,7 +41,7 @@ router.delete("/:id", async (req, res) => {
 	}
 });
 // GET HOTEL
-router.put("/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
 	try {
 		const hotel = await Hotel.findById(req.params.id);
 		res.status(200).json(hotel);
@@ -50,9 +50,9 @@ router.put("/:id", async (req, res) => {
 	}
 });
 // GET ALL HOTELS
-router.put("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
 	try {
-		const hotels = await Hotel.find(req.params.id);
+		const hotels = await Hotel.find();
 		res.status(200).json(hotels);
 	} catch (err) {
 		res.status(500).json(err);
