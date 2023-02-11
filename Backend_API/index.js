@@ -23,6 +23,12 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //middleware
+
+app.use((req, res, next) => {
+	console.log("middleware testing");
+	next();
+});
+
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelsRoute);
